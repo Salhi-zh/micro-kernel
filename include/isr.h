@@ -1,0 +1,56 @@
+#ifndef ISR_H
+#define ISR_H
+
+#include <kernel.h>
+
+/* Registers pushed by the ISR stub (common handler) */
+typedef struct registers {
+    uint32_t ds;                     /* Data segment selector */
+    uint32_t edi, esi, ebp, esp, ebx, edx, ecx, eax; /* Pushed by pusha */
+    uint32_t int_no, err_code;        /* Interrupt number and error code */
+    uint32_t eip, cs, eflags, useresp, ss; /* Pushed by CPU */
+} registers_t;
+
+/* Function prototype for ISR handlers */
+typedef void (*isr_handler_t)(registers_t*);
+
+/* Public functions */
+void isr_init(void);
+void isr_register_handler(uint8_t num, isr_handler_t handler);
+void isr_unregister_handler(uint8_t num);
+
+/* These are the assembly stubs (declared as extern) */
+extern void isr0(void);
+extern void isr1(void);
+extern void isr2(void);
+extern void isr3(void);
+extern void isr4(void);
+extern void isr5(void);
+extern void isr6(void);
+extern void isr7(void);
+extern void isr8(void);
+extern void isr9(void);
+extern void isr10(void);
+extern void isr11(void);
+extern void isr12(void);
+extern void isr13(void);
+extern void isr14(void);
+extern void isr15(void);
+extern void isr16(void);
+extern void isr17(void);
+extern void isr18(void);
+extern void isr19(void);
+extern void isr20(void);
+extern void isr21(void);
+extern void isr22(void);
+extern void isr23(void);
+extern void isr24(void);
+extern void isr25(void);
+extern void isr26(void);
+extern void isr27(void);
+extern void isr28(void);
+extern void isr29(void);
+extern void isr30(void);
+extern void isr31(void);
+
+#endif
